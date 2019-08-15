@@ -25,7 +25,6 @@ public class Main {
           int ny=ty+dy[i];
           if(nx<0||nx>r-1||ny<0||ny>c-1) continue;
           if(visited[nx][ny]) continue;
-          if(map[nx][ny]=='L') continue;
           if(map[nx][ny]=='.') {
             q.add(new Pair(nx, ny));
             visited[nx][ny]=true;
