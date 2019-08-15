@@ -15,7 +15,7 @@ public class Main {
   static int time;
   public static void solve() {
     while(true) {
-      while(!q.isEmpty()) {    // ºùÆÇÀ» ³ìÀÎ´Ù.
+      while(!q.isEmpty()) {    // 빙판을 녹인다.
         Pair tmp = q.poll();
         int tx=tmp.x;
         int ty=tmp.y;
@@ -34,7 +34,7 @@ public class Main {
           }
         }
       }
-      while(!swan.isEmpty()) {      // ¹éÁ¶ ÀÌµ¿
+      while(!swan.isEmpty()) {      // 백조 이동
         Pair tmp = swan.poll();
         int tx=tmp.x;
         int ty=tmp.y;
