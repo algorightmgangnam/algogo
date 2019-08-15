@@ -78,7 +78,6 @@ int get_result(int result, int runner) {
 
 int play_game() {
 	Runner r;
-	//cnt++;
 
 	int cur_runner;
 	int out_count = 0;
@@ -102,13 +101,10 @@ int play_game() {
 			else {
 				score += get_result(batting_info, cur_runner);
 			}
-			//cout << cur_runner << " " << score << " " << endl;
 			
 		}
 	}
 
-	//cout << "end" << endl;
-	//if (cnt == 2) exit(0);
 	return score;
 }
 
