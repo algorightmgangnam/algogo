@@ -20,7 +20,7 @@ public class Main {
         arrtmp[i][j]=map[i][j];
       }
     }
-    while(!q.isEmpty()) { // È¸Àü ¿¬»êÀ» ¸ğµÎ ¼öÇàÇÒ ¶§ ±îÁö.
+    while(!q.isEmpty()) { // íšŒì „ ì—°ì‚°ì„ ëª¨ë‘ ìˆ˜í–‰í•  ë•Œ ê¹Œì§€.
       Pair tmp=q.poll();
       int sx=tmp.r-tmp.s;
       int sy=tmp.c-tmp.s;
@@ -28,16 +28,16 @@ public class Main {
       int ey=tmp.c+tmp.s;
       while(true) {
         if(ex==sx||ey==sy) break;
-        for(int p=sy; p<ey; p++) {     // ¿ì
+        for(int p=sy; p<ey; p++) {     // ìš°
           arrtmp[sx][p+1]=copymap[sx][p];
         }
-        for(int p=sx; p<ex; p++) {     // ÇÏ
+        for(int p=sx; p<ex; p++) {     // í•˜
           arrtmp[p+1][ey]=copymap[p][ey];
         }
-        for(int p=ey; p>sy; p--) {     // ÁÂ
+        for(int p=ey; p>sy; p--) {     // ì¢Œ
           arrtmp[ex][p-1]=copymap[ex][p];
         }
-        for(int p=ex; p>sx; p--) {     // »ó
+        for(int p=ex; p>sx; p--) {     // ìƒ
           arrtmp[p-1][sy]=copymap[p][sy];
         }
         sx++; sy++;
@@ -79,7 +79,7 @@ public class Main {
     arr[j] = arr[i-1];
     arr[i-1] = temp;
     
-    // i¹øÂ° µÚÂÊÀ» ¿À¸§Â÷¼øÀ¸·Î Á¤·Ä.
+    // ië²ˆì§¸ ë’¤ìª½ì„ ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬.
     j=arr.length-1;
     while(i<j) {
       int tmp = arr[j];
@@ -111,7 +111,7 @@ public class Main {
         map[i][j]=Integer.parseInt(st.nextToken());
       }
     }
-    arr=new int[k]; // ¿¬»êÀÇ ¼öÇà ¼ø¼­¸¦ ÀúÀå.
+    arr=new int[k]; // ì—°ì‚°ì˜ ìˆ˜í–‰ ìˆœì„œë¥¼ ì €ì¥.
     for(int i=0; i<k; i++) {
       arr[i]=i;
     }
@@ -123,7 +123,7 @@ public class Main {
       list.add(new Pair(r, c, s));
     }
     
-    do { // ¸ğµç ¿¬»ê ¼ø¼­¸¦ ¼öÇàÇØ¾ßÇÑ´Ù.
+    do { // ëª¨ë“  ì—°ì‚° ìˆœì„œë¥¼ ìˆ˜í–‰í•´ì•¼í•œë‹¤.
       for(int i=0; i<k; i++) {
         q.add(list.get(arr[i]));
       }
