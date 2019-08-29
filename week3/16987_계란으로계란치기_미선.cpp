@@ -4,7 +4,6 @@
 using namespace std;
 
 int N;
-vector<pair<int, int>> eggs;
 vector<pair<int, int>> breakeggs;
 int maxbroken = 0;
 int broken=0;
@@ -33,10 +32,8 @@ void breaking(int k) {
 
 		canbreak = true;
 		//치기
-		int handw = breakeggs[k].second;
-		int targetw = breakeggs[i].second;
-		breakeggs[k].first -= targetw;
-		breakeggs[i].first -= handw;
+		breakeggs[k].first -= breakeggs[i].second;
+		breakeggs[i].first -= breakeggs[k].second;
 		if (breakeggs[k].first <= 0)
 			broken++;
 		if (breakeggs[i].first <= 0)
@@ -47,9 +44,8 @@ void breaking(int k) {
 			broken--;
 		if (breakeggs[i].first <= 0)
 			broken--;
-		breakeggs[k].first += targetw;
-		breakeggs[i].first += handw;
-
+		breakeggs[k].first += breakeggs[i].second;
+		breakeggs[i].first += breakeggs[k].second;
 	}
 	if (canbreak == false) {
 		breaking(k + 1);
@@ -65,14 +61,11 @@ int main(void) {
 	cin >> N;
 	for (int i = 0; i < N; i++) {
 		cin >> a >> b;
-		eggs.push_back({ a,b });
+		breakeggs.push_back({ a,b });
 	}
 
-	breakeggs = eggs;
 	breaking(0);
-
 	cout << maxbroken;
-
 
 	return 0;
 }
