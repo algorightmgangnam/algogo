@@ -6,7 +6,7 @@
 using namespace std;
 
 queue<pair<int, int>> puyo_coord;
-queue<pair<int, int>> tmp;
+
 char map[12][6];
 bool visited[12][6];
 int dr[4] = { 0,0,1,-1 };
@@ -62,7 +62,6 @@ int chk(int r, int c) {
 
 void break_puyo_(int r, int c) {
 	int nr, nc, cr, cc;
-	//cout << r << c << "\n";
 	queue<pair<int, int>> q;
 	q.push(make_pair(r, c));
 	while (!q.empty()) {
@@ -117,12 +116,6 @@ void play() {
 	while (true) {
 		if (break_puyo() == 0) break;
 		move();
-		/*for (int i = 0; i < 12; i++) {
-			for (int j = 0; j < 6; j++) {
-				cout << map[i][j] << " ";
-			}
-			cout << endl;
-		}*/
 	}
 }
 
