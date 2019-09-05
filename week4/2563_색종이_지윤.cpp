@@ -17,7 +17,7 @@ int main() {
 	
 		for (int r = 0; r < 10; r++) {
 			for (int c = 0; c < 10; c++) {
-				map[100 - y  -r][100- x - c] = 1;
+				map[y +r][x + c] = 1;
 			}
 		}
 	}
