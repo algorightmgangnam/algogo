@@ -3,7 +3,7 @@
 using namespace std;
 
 int board[9][9];
-vector<pair<int, int>> emptySpace;		// ºó °ø°£ ÀúÀå º¤ÅÍ
+vector<pair<int, int>> emptySpace;		// ë¹ˆ ê³µê°„ ì €ìž¥ ë²¡í„°
 
 void DFS(int);
 
@@ -13,14 +13,14 @@ void checkpossible(int y, int x, int idx)
 
 	for (int i = 0; i < 9; ++i)
 	{
-		// °¡·Î °Ë»ç
+		// ê°€ë¡œ ê²€ì‚¬
 		if (board[y][i]) num[board[y][i]] = true;
 
-		// ¼¼·Î °Ë»ç
+		// ì„¸ë¡œ ê²€ì‚¬
 		if (board[i][x]) num[board[i][x]] = true;
 	}
 
-	// 3*3 °Ë»ç
+	// 3*3 ê²€ì‚¬
 	int ny = (y / 3) * 3;
 	int nx = (x / 3) * 3;
 
@@ -34,29 +34,29 @@ void checkpossible(int y, int x, int idx)
 
 	int cnt = 0;
 
-	// ºó ¼ýÀÚ°¡ ÀÖ´ÂÁö ¼À
+	// ë¹ˆ ìˆ«ìžê°€ ìžˆëŠ”ì§€ ì…ˆ
 	for (int i = 1; i <= 9; ++i)
 	{
-		// ºó ¼ýÀÚ°¡ ÀÖÀ¸¸é board¿¡ ³Ö°í ´ÙÀ½ ºó°ø°£ Å½»ö
+		// ë¹ˆ ìˆ«ìžê°€ ìžˆìœ¼ë©´ boardì— ë„£ê³  ë‹¤ìŒ ë¹ˆê³µê°„ íƒìƒ‰
 		if (!num[i])
 		{
 			board[y][x] = i;
 
 			DFS(idx + 1);
 
-			// 0À¸·Î º¸µå ÃÊ±âÈ­
+			// 0ìœ¼ë¡œ ë³´ë“œ ì´ˆê¸°í™”
 			board[y][x] = 0;
 		}
 		else cnt++;
 	}
 
-	// ºó ¼ýÀÚ°¡ ¾øÀ¸¸é return
+	// ë¹ˆ ìˆ«ìžê°€ ì—†ìœ¼ë©´ return
 	if (cnt == 9) return;
 }
 
 void DFS(int idx)
 {
-	// idx°¡ ºó °ø°£ º¤ÅÍÀÇ ¼ö¿Í °°¾ÆÁø´Ù¸é Ãâ·ÂÇÏ°í exit·Î Á¾·á
+	// idxê°€ ë¹ˆ ê³µê°„ ë²¡í„°ì˜ ìˆ˜ì™€ ê°™ì•„ì§„ë‹¤ë©´ ì¶œë ¥í•˜ê³  exitë¡œ ì¢…ë£Œ
 	if (idx == emptySpace.size())
 	{
 		for (int i = 0; i < 9; ++i)
@@ -89,6 +89,6 @@ int main(void)
 		}
 	}
 
-	// idx´Â 0ºÎÅÍ ½ÃÀÛ
+	// idxëŠ” 0ë¶€í„° ì‹œìž‘
 	DFS(0);
 }
