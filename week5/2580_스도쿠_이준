@@ -1,0 +1,100 @@
+#include<iostream>
+#include<algorithm>
+#include<vector>
+using namespace std;
+int map[10][10];
+
+vector<pair<int, int>> v;
+
+
+//가로 검사
+bool rowCheck(int r, int num) {
+	for (int i = 0; i < 9; i++)
+	{
+		if (map[r][i] == num)
+		{
+			return false; //1부터 9까지 중에 있으면 거짓
+		}
+	}
+
+	return true; // 없으면 참
+}
+
+//세로 검사
+bool colCheck(int c, int num) {
+	for (int i = 0; i < 9; i++)
+	{
+		if (map[i][c]== num)
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+//3X3단위로 1~9에 있는지 검사
+bool check3(int r, int c, int num) {
+	r = r / 3;
+	c = c / 3;
+	for (int rr = r * 3; rr < (r * 3) + 3; rr++) {
+		for (int cc = c*3; cc < (c*3)+3; cc++)
+		{	
+			if (map[rr][cc] == num)
+			{
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+bool pass(int x, int y, int num) {
+	return (rowCheck(x, num) && colCheck(y, num) && check3(x, y, num))?true:false;
+}
+
+void dfs(int index) {
+	if (index == v.size())
+	{
+		for (int i = 0; i < 9; i++)
+		{
+			for (int j = 0; j < 9; j++)
+			{
+				cout << map[i][j] << ' ';
+			}
+			cout << "\n";
+		}
+		exit(0);
+	}
+
+	for (int i = 1; i <= 9; i++)
+	{
+		int x = v[index].first;
+		int y = v[index].second;
+		if (pass(x, y, i)) {
+			map[x][y] = i;
+			dfs(index + 1);
+			map[x][y] = 0;
+		}
+	}
+}
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(0); cout.tie(0);
+
+
+	for (int i = 0; i < 9; i++)
+	{
+		for (int j = 0; j < 9; j++)
+		{
+			cin >> map[i][j];
+			if (map[i][j] == 0)
+			{
+				v.push_back(make_pair(i, j));
+			}
+		}
+	}
+
+	dfs(0);
+	return 0;
+}
